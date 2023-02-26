@@ -1,0 +1,25 @@
+﻿@page "/test"
+@inject ITestAppService TestAppService
+<h3>TestParameter</h3>
+
+<SubmitButton Clicked="GetExample">GetExample</SubmitButton>
+<SubmitButton Clicked="PostExample">PostExample</SubmitButton>
+
+@code {
+
+
+    GetListInput getListInput = new GetListInput()
+    {
+            Date1 = DateTime.Today,
+            Text = "this is just a text"
+    };
+    async Task PostExample()
+    {
+        await TestAppService.PostExample(getListInput, "someAnotherRequest");
+    }
+
+    async Task GetExample()
+    {
+        await TestAppService.GetExample(getListInput);
+    }
+}
